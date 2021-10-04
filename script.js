@@ -9,6 +9,10 @@ for(let i = 0; i < addToCartButtons.length; i++){
     
 }
 // 🍀js07. This function helps to add items to our cart
+/* 
+🦄 event_bubbling활용-클릭한 elem의 parent에 이벤트 걸기
+
+*/
 function addToCart(event){
 
     /*js07. btn, parentElement */
@@ -62,12 +66,20 @@ function totalCost(event){
     quantity_parent = quantity.parentElement.parentElement
     price_field = quantity_parent.getElementsByClassName('item-price')[0]
     total_field = quantity_parent.getElementsByClassName('total-price')[0]
+
+    /* replace(a,b) : a -> b 단어를 바꿔줌  */
     price_field_content = price_field.innerText.replace('$', '')
+
+    /* item price * 갯수 */
     total_field.children[0].innerText = '$' +  quantity.value * price_field_content
     grandTotal()
 
     /*🍀js38 isNaN(value) – 인수를 숫자로 변환한 다음 NaN인지 테스트함 
     item.value가 0보다 작을때 (item생성),  quantity.value = 1로 설정
+   
+    🍉isNaN(~):
+    ()안의 value가 number인지 아닌지 확인해줌.
+    number인때  true   
     */
     if(isNaN(quantity.value)|| quantity.value <= 0){
         quantity.value = 1
@@ -85,7 +97,7 @@ function grandTotal(){
     for(let i = 0; i < all_total_fields.length; i++){
 
         /* 🍄
-            10 $ 표시 지움
+            10 $ 표시 지움 : replace(a,b) : a -> b 단어를 바꿔줌 
             20 남은 글자를 number로 바꿈        
         */
         all_prices = Number(all_total_fields[i].innerText.replace('$', ''))
