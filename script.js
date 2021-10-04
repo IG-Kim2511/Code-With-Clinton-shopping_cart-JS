@@ -11,9 +11,6 @@ for(let i = 0; i < addToCartButtons.length; i++){
 // 🍀js07. This function helps to add items to our cart
 function addToCart(event){
 
-
-
-
     /*js07. btn, parentElement */
     let btn = event.target
     let btnGrandParent = btn.parentElement.parentElement
@@ -39,9 +36,6 @@ function addToCart(event){
 `
 
     cartContainer.append(itemContainer)
-
-
-
 
     // Accessing individual quantity fields
     for(let i = 0; i < quantityFields.length; i++){
@@ -71,6 +65,10 @@ function totalCost(event){
     price_field_content = price_field.innerText.replace('$', '')
     total_field.children[0].innerText = '$' +  quantity.value * price_field_content
     grandTotal()
+
+    /*🍀js38 isNaN(value) – 인수를 숫자로 변환한 다음 NaN인지 테스트함 
+    item.value가 0보다 작을때 (item생성),  quantity.value = 1로 설정
+    */
     if(isNaN(quantity.value)|| quantity.value <= 0){
         quantity.value = 1
     }
@@ -79,12 +77,17 @@ function totalCost(event){
     
 }
 
-// This function helps to add up the total of the items
+// 🍀js39. sum up of items price, (This function helps to add up the total of the items)
 function grandTotal(){
     let total = 0
     let grand_total = document.getElementsByClassName('grand-total')[0]
     all_total_fields = document.getElementsByClassName('total-price')
     for(let i = 0; i < all_total_fields.length; i++){
+
+        /* 🍄
+            10 $ 표시 지움
+            20 남은 글자를 number로 바꿈        
+        */
         all_prices = Number(all_total_fields[i].innerText.replace('$', ''))
         total+=all_prices
     }
@@ -94,6 +97,7 @@ function grandTotal(){
 }
 
 
+// 🍀js52. remove item on table
 function removeItem(event){
     del_btn = event.target
     del_btn_parent = del_btn.parentElement.parentElement
