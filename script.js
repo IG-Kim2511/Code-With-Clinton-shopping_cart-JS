@@ -37,7 +37,7 @@ function addToCart(event){
     <td><input type = 'number' class = 'num' value = '1'></td>
     <td class="uk-text-truncate total-price"><h3>${itemPrice}</h3></td>
     <td><button class="uk-button uk-button-danger" type="button">Remove</button></td>
-`
+    `
 
     cartContainer.append(itemContainer)
 
@@ -93,6 +93,11 @@ function totalCost(event){
 function grandTotal(){
     let total = 0
     let grand_total = document.getElementsByClassName('grand-total')[0]
+
+    /* 🍄 price add, remove 방법: 
+    그냥 테이블에 남아있는 아이템의 가격을 합치는 방식이면 됨
+    
+    */
     all_total_fields = document.getElementsByClassName('total-price')
     for(let i = 0; i < all_total_fields.length; i++){
 
